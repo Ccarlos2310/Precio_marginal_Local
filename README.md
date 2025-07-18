@@ -18,11 +18,11 @@ Este proyecto en Python permite **consultar, visualizar y analizar** el Precio M
 
 Este proyecto utiliza las siguientes bibliotecas:
 
-```bash
+bash
 pandas
 requests
 matplotlib
-bs4 ´´´
+bs4 
 
 🧠 Estructura del código
 obtener_datos_pml(id_nodo, fecha_objetivo)

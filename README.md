@@ -29,8 +29,8 @@ bash
 Copy
 Edit
 pip install -r requirements.txt
---
 
+----
 ## 🧠 Estructura del código
 obtener_datos_pml(id_nodo, fecha_objetivo)
 Descarga los datos de PML para un nodo en una fecha específica.
@@ -44,7 +44,7 @@ Genera una gráfica del PML a lo largo del tiempo.
 analizar_rango_pml(df, id_nodo)
 Imprime estadísticas como media, máximos y mínimos del PML.
 
---
+---
 ##🧪 Ejemplo de uso
 python
 Copy
@@ -61,7 +61,7 @@ if not df.empty:
     graficar_rango_pml(df, NODO_ID, FECHA_INICIO_RANGO, FECHA_FIN_RANGO)
     analizar_rango_pml(df, NODO_ID)
 
---
+---
 ## 📷 Visualización
 La función graficar_rango_pml genera una figura como la siguiente:
 
@@ -73,7 +73,7 @@ Eje Y: PML en $/MWh
 Línea: Evolución horaria del PML
 Incluye etiquetas, leyendas, y formato de fecha legible.
 
---
+---
 ## 🧾 Glosario
 Término	Descripción
 PML	Precio Marginal Local
@@ -83,7 +83,7 @@ PML_ENE	Componente del PML asociado al costo de la energía
 PML_PER	Componente del PML asociado a las pérdidas en la red
 PML_CNG	Componente del PML asociado a la congestión de la red
 
---
+---
 ## 📌 Notas adicionales
 Este proyecto está enfocado en datos del Mercado Eléctrico Mayorista (MEM) en México.
 

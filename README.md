@@ -14,17 +14,8 @@ Este proyecto en Python permite **consultar, visualizar y analizar** el Precio M
 
 ---
 
-## 📦 Requisitos
+# 🧠 Estructura del código
 
-Este proyecto utiliza las siguientes bibliotecas:
-
-bash
-pandas
-requests
-matplotlib
-bs4 
-
-🧠 Estructura del código
 obtener_datos_pml(id_nodo, fecha_objetivo)
 Descarga los datos de PML para un nodo en una fecha específica.
 
@@ -37,7 +28,9 @@ Genera una gráfica del PML a lo largo del tiempo.
 analizar_rango_pml(df, id_nodo)
 Imprime estadísticas como media, máximos y mínimos del PML.
 
-🧪 Ejemplo de uso
+---
+
+# 🧪 Ejemplo de uso
 python
 Copy
 Edit
@@ -52,7 +45,10 @@ df = obtener_rango_pml(NODO_ID, FECHA_INICIO_RANGO, FECHA_FIN_RANGO)
 if not df.empty:
     graficar_rango_pml(df, NODO_ID, FECHA_INICIO_RANGO, FECHA_FIN_RANGO)
     analizar_rango_pml(df, NODO_ID)
-📷 Visualización
+
+---
+
+# 📷 Visualización
 La función graficar_rango_pml genera una figura como la siguiente:
 
 yaml
@@ -63,7 +59,9 @@ Eje Y: PML en $/MWh
 Línea: Evolución horaria del PML
 Incluye etiquetas, leyendas y formato de fecha legible.
 
-🧾 Glosario
+---
+
+# 🧾 Glosario
 Término	Descripción
 PML	Precio Marginal Local
 CENACE	Centro Nacional de Control de Energía
@@ -72,7 +70,9 @@ PML_ENE	Componente del PML asociado al costo de la energía
 PML_PER	Componente del PML asociado a las pérdidas en la red
 PML_CNG	Componente del PML asociado a la congestión de la red
 
-📌 Notas adicionales
+---
+
+# 📌 Notas adicionales
 Este proyecto está enfocado en datos del Mercado Eléctrico Mayorista (MEM) en México.
 
 El código maneja errores comunes como fallos de conexión o respuestas vacías.

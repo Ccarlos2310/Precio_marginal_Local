@@ -63,11 +63,17 @@ Incluye etiquetas, leyendas y formato de fecha legible.
 
 # 🧾 Glosario
 Término	Descripción
+
 PML	Precio Marginal Local
+
 CENACE	Centro Nacional de Control de Energía
+
 SIN	Sistema Interconectado Nacional
+
 PML_ENE	Componente del PML asociado al costo de la energía
+
 PML_PER	Componente del PML asociado a las pérdidas en la red
+
 PML_CNG	Componente del PML asociado a la congestión de la red
 
 ---

@@ -22,7 +22,7 @@ Este proyecto utiliza las siguientes bibliotecas:
 pandas
 requests
 matplotlib
-bs4 ```
+bs4 ´´´
 
 🧠 Estructura del código
 obtener_datos_pml(id_nodo, fecha_objetivo)

@@ -1,74 +1,87 @@
-📈 Análisis de Precio Marginal Local (PML) desde la API de CENACE
-Este proyecto permite consultar, visualizar y analizar el Precio Marginal Local (PML) para un nodo específico del Sistema Interconectado Nacional (SIN) utilizando la API pública del CENACE (Centro Nacional de Control de Energía) de México.
+# 📈 Análisis del Precio Marginal Local (PML) a partir de la API del CENACE
 
-🚀 Características principales
-Consulta de datos horarios de PML (y sus componentes: energía, pérdidas y congestión) para una fecha o rango de fechas.
+Este proyecto en Python permite **consultar, visualizar y analizar** el Precio Marginal Local (PML) para un nodo específico del **Sistema Interconectado Nacional (SIN)**, utilizando la **API pública del CENACE** (Centro Nacional de Control de Energía) en México.
 
-Manejo correcto de la hora "24" (medianoche) para asegurar series temporales consistentes.
+---
 
-Visualización gráfica del comportamiento del PML.
+## 🧰 Funcionalidades
 
-Estadísticas básicas: resumen descriptivo, promedio diario, horas con PML máximo y mínimo.
+- 🔎 Consulta del PML por nodo y rango de fechas.
+- 📊 Visualización gráfica del comportamiento horario del PML.
+- 📈 Análisis estadístico básico: media diaria, máximos y mínimos.
+- ✅ Corrección del valor horario `"24"` para manejo adecuado de la medianoche.
+- 🧩 Descomposición del PML en sus componentes: energía, pérdidas y congestión.
 
-📦 Librerías utilizadas
-bash
-Copy
-Edit
-requests
+---
+
+## 📦 Requisitos
+
+Este proyecto utiliza las siguientes bibliotecas:
+
+```bash
 pandas
+requests
 matplotlib
-bs4 (BeautifulSoup)
-datetime
-Puedes instalarlas con:
+bs4
+Puedes instalar las dependencias con:
 
 bash
 Copy
 Edit
 pip install -r requirements.txt
-⚠️ Recuerda que la API de CENACE devuelve los datos en formato XML, por lo que se utiliza BeautifulSoup para su procesamiento.
-
 🧠 Estructura del código
-obtener_datos_pml: Descarga y procesa los datos XML para una fecha.
+obtener_datos_pml(id_nodo, fecha_objetivo)
+Descarga los datos de PML para un nodo en una fecha específica.
 
-obtener_rango_pml: Itera sobre un rango de fechas, consolidando los datos en un único DataFrame.
+obtener_rango_pml(id_nodo, fecha_inicio, fecha_fin)
+Itera sobre un rango de fechas, acumulando los datos diarios.
 
-graficar_rango_pml: Genera una gráfica del PML a lo largo del rango temporal.
+graficar_rango_pml(df, id_nodo, fecha_inicio, fecha_fin)
+Genera una gráfica del PML a lo largo del tiempo.
 
-analizar_rango_pml: Muestra estadísticas descriptivas del comportamiento del PML.
+analizar_rango_pml(df, id_nodo)
+Imprime estadísticas como media, máximos y mínimos del PML.
 
-📊 Ejemplo de uso
+🧪 Ejemplo de uso
 python
 Copy
 Edit
-if __name__ == "__main__":
-    NODO_ID = '01PLO-115'
-    FECHA_INICIO_RANGO = date(2025, 7, 10)
-    FECHA_FIN_RANGO = date(2025, 7, 16)
+from datetime import date
 
-    df = obtener_rango_pml(NODO_ID, FECHA_INICIO_RANGO, FECHA_FIN_RANGO)
+NODO_ID = '01PLO-115'
+FECHA_INICIO_RANGO = date(2025, 7, 10)
+FECHA_FIN_RANGO = date(2025, 7, 16)
 
-    if not df.empty:
-        graficar_rango_pml(df, NODO_ID, FECHA_INICIO_RANGO, FECHA_FIN_RANGO)
-        analizar_rango_pml(df, NODO_ID)
+df = obtener_rango_pml(NODO_ID, FECHA_INICIO_RANGO, FECHA_FIN_RANGO)
+
+if not df.empty:
+    graficar_rango_pml(df, NODO_ID, FECHA_INICIO_RANGO, FECHA_FIN_RANGO)
+    analizar_rango_pml(df, NODO_ID)
 📷 Visualización
-La gráfica generada muestra la evolución horaria del Precio Marginal Local durante el rango analizado:
+La función graficar_rango_pml genera una figura como la siguiente:
 
-java
+yaml
 Copy
 Edit
-Fecha y hora (X-axis) vs PML en $/MWh (Y-axis)
-🧾 Notas adicionales
-El script maneja errores de conexión y respuestas no exitosas de la API.
+Eje X: Fecha y hora
+Eje Y: PML en $/MWh
+Línea: Evolución horaria del PML
+Incluye etiquetas, leyendas, y formato de fecha legible.
 
-Se ajustan correctamente las horas "24", que representan la medianoche del día siguiente.
-
-Ideal para análisis exploratorio de precios nodales y estudios de comportamiento del mercado eléctrico mexicano.
-
-📚 Glosario
-Término	Significado
+🧾 Glosario
+Término	Descripción
 PML	Precio Marginal Local
 CENACE	Centro Nacional de Control de Energía
 SIN	Sistema Interconectado Nacional
-PML_ENE	Componente del PML asociado al costo de energía
-PML_PER	Componente del PML asociado a las pérdidas
-PML_CNG	Componente del PML asociado a la congestión de red
+PML_ENE	Componente del PML asociado al costo de la energía
+PML_PER	Componente del PML asociado a las pérdidas en la red
+PML_CNG	Componente del PML asociado a la congestión de la red
+
+📌 Notas adicionales
+Este proyecto está enfocado en datos del Mercado Eléctrico Mayorista (MEM) en México.
+
+El código maneja errores comunes como fallos de conexión o respuestas vacías.
+
+Puede adaptarse fácilmente a otros nodos o sistemas regionales.
+
+Ideal para análisis exploratorios, reportes o visualización educativa.
